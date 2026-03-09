@@ -8,14 +8,6 @@ in the system.
 
 This repository provides a minimal example of the problem we encountered.
 
-When a configuration class used in a `@FeignClient` is also annotated
-with `@Configuration` (and resides in a scanned package), it "leaks"
-into the parent `ApplicationContext`. This causes its beans, such as an
-`ErrorDecoder`, to become the global default for **all** Feign clients
-in the application, leading to unexpected behavior and production
-incidents.
-
-
 ## The Problem
 
 The project contains two clients:
