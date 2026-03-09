@@ -93,4 +93,4 @@ tell it not to. By the time your integration tests fail (if you have
 them), the root cause is often buried under layers of
 auto-configuration magic.
 
-Avoid @Configuration for FeignClients!
+Avoid annotating Feign client configuration classes with `@Configuration`.
