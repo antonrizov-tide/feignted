@@ -14,9 +14,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest(properties = {
-        "spring.main.allow-bean-definition-overriding=true"
-})
+@SpringBootTest
 @AutoConfigureWireMock(port = 0)
 public class SpringMagicTest {
 
@@ -42,6 +40,7 @@ public class SpringMagicTest {
                 .willReturn(aResponse().withStatus(400)));
 
         assertThrows(AException.class, () -> a.a());
+        // This fails! It throws AException because AFeignConfig leaked.
         assertThrows(BException.class, () -> b.b());
     }
 }
