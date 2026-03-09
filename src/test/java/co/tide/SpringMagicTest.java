@@ -40,7 +40,7 @@ public class SpringMagicTest {
                 .willReturn(aResponse().withStatus(400)));
 
         assertThrows(AException.class, () -> a.a());
-        // This fails! It throws AException because AFeignConfig leaked.
+        // This no longer fails!
         assertThrows(BException.class, () -> b.b());
     }
 }
